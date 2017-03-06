@@ -81,7 +81,7 @@ def find(text):
             break
     return flag       
     
-#find('Looking for Interns! Mention someone you know, who needs an internship.. Deadline: CallASAP. #9999835257. akshay@missteen.international. www.missteen.international. www.glamanand.com')
+
 def text_cleaning(text):
         text = text.encode('ascii', 'ignore')
         return text
@@ -129,7 +129,7 @@ if __name__=="__main__":
     all_features = [(sf.get_features(email, ''), label) for (email, label) in all_emails]
     train_set, test_set, classifier = sf.train(all_features, 1.0)
     sf.evaluate(train_set, test_set, classifier)
-#classify your new email
+#classify your new post
 
 
           
@@ -149,14 +149,14 @@ if __name__=="__main__":
         x=cells[1]
         y=cells[2]
         #print (y)
-        #print ('prooooooooooooooooooooo')
+        
         if len(y)==4:
             outfile1.write(cells[0]+";"+text_cleaning(x))
             outfile1.write("\n")
-            #print ('ypppppppppppp')
+            
         elif len(y)==5:
             outfile2.write(cells[0]+";"+text_cleaning(x))
             outfile2.write("\n")
-            #print ('yeeeeeeeeeeeeeeeeeeeeeeeeee')
+           
 
     f.close() 
