@@ -1,0 +1,45 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+d={}
+
+d["Delhi StartUps, Internships & Employment"]= 63
+d["Internships & Jobs @ Delhi & NCR"]= 59
+d["Startups and Internships in India"]=58
+d["Delhi Internships (by Zigsaw)"]= 55
+d["Startup Internships  (by Zigsaw)"]= 52
+d["Internships / Graduation Assignments"]= 52
+d["JOBS IN BPO & KPO ( International & Domestic)"]= 51
+d["AIESEC Matching Group"]= 50
+d["DELHI CODING INTERNSHIPS"]= 47
+d["Content Writing, Writers"]= 45
+
+#width=1/1.5
+x_labels=d.keys()
+frequencies=d.values()
+#frequencies = [6, 16, 75, 160, 244, 260, 145, 73, 16, 4, 1]   # bring some raw data
+
+freq_series = pd.Series.from_array(frequencies)   # in my original code I create a series and run on that, so for consistency I create a series from the list.
+
+#x_labels = [108300.0, 110540.0, 112780.0, 115020.0, 117260.0, 119500.0, 121740.0, 123980.0, 126220.0, 128460.0, 130700.0]
+
+# now to plot the figure...
+plt.figure(figsize=(12, 8))
+ax = freq_series.plot(kind='bar')
+ax.set_title("Amount Frequency")
+ax.set_xlabel("Amount ($)")
+ax.set_ylabel("Frequency")
+ax.set_xticklabels(x_labels)
+
+rects = ax.patches
+
+# Now make some labels
+labels = ["label%d" % i for i in xrange(len(rects))]
+
+for rect, label in zip(rects, labels):
+    height = rect.get_height()
+    ax.text(rect.get_x() + rect.get_width()/2, height + 5, label, ha='center', va='bottom')
+
+plt.savefig("image.png")
